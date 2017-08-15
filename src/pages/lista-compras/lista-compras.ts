@@ -30,7 +30,7 @@ export class ListaComprasPage {
     this.listaExemplo();
   }
 
-  public alerta(compra: Compra){
+  public alertaExclusao(compra: Compra){
     this._alertCtrl.create({
       title: 'Atenção',
       subTitle: `Excluir a compra de ${compra.dataFormatada}`,
