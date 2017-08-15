@@ -13,6 +13,35 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
+    
+    <ion-card-header>
+      Compra do dia {{compra.dataFormatada}}
+    </ion-card-header>
+
+    <ion-list>
+
+      <ion-item *ngFor="let item of compra.produtos">
+
+        <ion-label text-wrap>
+          {{item.produto.descricao}}
+        </ion-label>
+        <div item-content>
+          <strong>{{item.quantidade}}</strong> {{item.produto.unidade}}
+        </div>
+        <ion-toggle color="secondary" [checked]="item.comprado"></ion-toggle>
+
+      </ion-item>
+      
+    </ion-list>
+
+  </ion-card>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="danger">
+    <ion-title>Comprado N de N itens</ion-title>
+  </ion-toolbar>
+</ion-footer>

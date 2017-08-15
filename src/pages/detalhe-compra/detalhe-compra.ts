@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { Compra } from '../../domains/compra/compra';
+
 /**
  * Generated class for the DetalheCompraPage page.
  *
@@ -15,11 +17,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetalheCompraPage {
 
+  public compra: Compra;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.compra = this.navParams.get('compraSelecionada');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DetalheCompraPage');
-  }
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad DetalheCompraPage');
+  // }
 
 }
