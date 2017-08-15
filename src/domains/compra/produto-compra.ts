@@ -7,7 +7,11 @@ export class ProdutoCompra{
         private _valor: number = _produto.valor,
         private _comprado: boolean = false
     ){
-
+    
+    }
+    
+    set comprado(status: boolean){
+        this._comprado = status;
     }
 
     get produto(){

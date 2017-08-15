@@ -28,17 +28,17 @@ export class ListaComprasPage {
   }
 
   private listaExemplo(){
-    let produto1 = new Produto('Arroz', 'Castelao', 'sc', 10);
+    let produto1 = new Produto('Arroz', 'Castelao', 'saco', 10);
     let produto_compra1 = new ProdutoCompra(produto1, 2, produto1.valor);
     let produto2 = new Produto('Feijão', 'Esp', 'pt', 5);
-    let produto_compra2 = new ProdutoCompra(produto2, 3);
+    let produto_compra2 = new ProdutoCompra(produto2, 3, produto2.valor, true);
     let lista = [];
     lista.push(produto_compra1);
     lista.push(produto_compra2);
     let compra1 = new Compra(new Date(), lista);
 
     produto2 = new Produto('Feijão', 'Esp', 'pt', 5);
-    produto_compra2 = new ProdutoCompra(produto2, 3);
+    produto_compra2 = new ProdutoCompra(produto2, 3, produto2.valor, true);
     lista = [];
     lista.push(produto_compra2);
     let compra2 = new Compra(new Date(), lista);
@@ -48,16 +48,16 @@ export class ListaComprasPage {
     lista = [];
     lista.push(produto_compra2);
     produto2 = new Produto('Feijão', 'Esp', 'pt', 2);
-    produto_compra2 = new ProdutoCompra(produto2, 20);
+    produto_compra2 = new ProdutoCompra(produto2, 20, produto2.valor, true);
     lista.push(produto_compra2);
     produto2 = new Produto('Feijão', 'Esp', 'pt', 3);
-    produto_compra2 = new ProdutoCompra(produto2, 30);
+    produto_compra2 = new ProdutoCompra(produto2, 30, produto2.valor, true);
     lista.push(produto_compra2);
     produto2 = new Produto('Feijão', 'Esp', 'pt', 4);
     produto_compra2 = new ProdutoCompra(produto2, 40);
     lista.push(produto_compra2);
     produto2 = new Produto('Feijão', 'Esp', 'pt', 5);
-    produto_compra2 = new ProdutoCompra(produto2, 50);
+    produto_compra2 = new ProdutoCompra(produto2, 50, produto2.valor, true);
     lista.push(produto_compra2);
     produto2 = new Produto('Feijão', 'Esp', 'pt', 6);
     produto_compra2 = new ProdutoCompra(produto2, 60);
