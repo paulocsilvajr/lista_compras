@@ -19,12 +19,17 @@ import { DetalheCompraPage } from '../../pages/detalhe-compra/detalhe-compra';
 })
 export class ListaComprasPage {
   
-  public listaCompras : Compra[] = []; 
+  public listaCompras : Compra[] = [];
+  public total: boolean = false; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     this.listaExemplo();
     // this.listaCompras.push(new Compra(new Date(), ));
+  }
+
+  public exibirTotal(status: boolean){
+    this.total = status;
   }
 
   private listaExemplo(){
