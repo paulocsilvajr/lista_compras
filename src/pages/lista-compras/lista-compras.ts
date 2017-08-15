@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Compra } from '../../domains/compra/compra';
 import { ProdutoCompra } from '../../domains/compra/produto-compra';
 import { Produto } from '../../domains/produto/produto';
@@ -22,10 +22,34 @@ export class ListaComprasPage {
   public listaCompras : Compra[] = [];
   public total: boolean = false; 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private _alertCtrl: AlertController) {
 
     this.listaExemplo();
-    // this.listaCompras.push(new Compra(new Date(), ));
+  }
+
+  public alerta(compra: Compra){
+    this._alertCtrl.create({
+      title: 'Atenção',
+      subTitle: `Excluir a compra de ${compra.dataFormatada}`,
+      buttons: [{
+        text: 'Sim',
+        handler: () => {
+          console.log('Excluído ' + compra.dataFormatada);
+          this.excluirCompra(compra);
+        }
+      },{
+        text: 'Não'
+      }]
+    }).present();
+  }
+
+  private excluirCompra(compra: Compra){
+    let posicao = this.listaCompras.indexOf(compra);
+
+    this.listaCompras.splice(posicao, 1);
   }
 
   public exibirTotal(status: boolean){
