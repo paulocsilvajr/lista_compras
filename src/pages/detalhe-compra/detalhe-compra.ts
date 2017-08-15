@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { Compra } from '../../domains/compra/compra';
 import { ProdutoCompra } from '../../domains/compra/produto-compra';
@@ -22,7 +22,10 @@ export class DetalheCompraPage {
   public quantidadeComprada: number = 0;
   public completo: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public _alertCtrl: AlertController) {
     this.compra = this.navParams.get('compraSelecionada');
 
     this.quantidadeComprada = this.getQuantidadeComprada();
@@ -59,7 +62,30 @@ export class DetalheCompraPage {
     
   }
 
+  public alertaExclusao(produto: ProdutoCompra){
+    this._alertCtrl.create({
+      title: 'Atenção',
+      subTitle: `Excluir a produto ${produto.produto.descricao}`,
+      buttons: [{
+        text: 'Sim',
+        handler: () => {
+          console.log('Excluído ' + produto.produto.descricao);
+          this.excluirProduto(produto);
+        }
+      },{
+        text: 'Não'
+      }]
+    }).present();
+  }
 
+  private excluirProduto(produto: ProdutoCompra){
+    this.compra.removeProduto(produto);
+
+    if (produto.comprado)
+      this.quantidadeComprada = this.getQuantidadeComprada();
+    else 
+      this.verificarSeCompleto();
+  }
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad DetalheCompraPage');

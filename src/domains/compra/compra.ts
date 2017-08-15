@@ -47,4 +47,9 @@ export class Compra{
     get produtos(){
         return this._produtoCompra;
     }
+
+    removeProduto(produto: ProdutoCompra){
+        let posicao = this._produtoCompra.indexOf(produto);
+        this._produtoCompra.splice(posicao, 1);
+    }
 }
