@@ -14,6 +14,18 @@ export class ProdutoCompra{
         this._comprado = status;
     }
 
+    set produto(produto: Produto){
+        this._produto = produto;
+    }
+
+    set quantidade(quantidade: number){
+        this._quantidade = quantidade;
+    }
+
+    set valor(valor: number){
+        this._valor = valor;
+    }
+
     get produto(){
         return this._produto;
     }

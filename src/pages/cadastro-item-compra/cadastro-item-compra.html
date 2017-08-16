@@ -13,6 +13,32 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
+    
+    <ion-list>
+
+      <ion-item>
+        <ion-label fixed>Produto</ion-label>
+        <ion-input type="text" [value]="produto.descricao" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Quantidade</ion-label>
+        <ion-input type="number" min="1" value="1" [(ngModel)]="produtoCompra.quantidade"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Preço</ion-label>
+        <ion-input type="text" [value]="produto.valorFormatado" [(ngModel)]="produtoCompra.valor"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-card>
+
+  <ion-buttons>
+    <button ion-button block (click)="inserirProduto()">Adicionar produto</button>
+  </ion-buttons>
 
 </ion-content>

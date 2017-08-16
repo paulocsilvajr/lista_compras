@@ -7,12 +7,42 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>PesquisaProduto</ion-title>
+    <ion-title>Pesquisa de Produto</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-fab right bottom padding>
+    <button ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-searchbar (ionInput)="pesquisar($event)"></ion-searchbar>
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let produto of listaProdutos">
+      <ion-item-options side="left">
+        <button ion-button color="secondary">
+          Alterar
+        </button>
+      </ion-item-options>
+
+      <ion-item (click)="cadastrarItemCompra(produto)">
+        {{produto.descricao}}
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button color="danger">
+          Remover
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+  </ion-list>
 
 </ion-content>

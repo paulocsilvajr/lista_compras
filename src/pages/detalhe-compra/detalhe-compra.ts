@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 
 import { Compra } from '../../domains/compra/compra';
 import { ProdutoCompra } from '../../domains/compra/produto-compra';
+import { PesquisaProdutoPage } from '../../pages/pesquisa-produto/pesquisa-produto';
 
 /**
  * Generated class for the DetalheCompraPage page.
@@ -83,8 +84,14 @@ export class DetalheCompraPage {
 
     if (produto.comprado)
       this.quantidadeComprada = this.getQuantidadeComprada();
-    else 
+    else
       this.verificarSeCompleto();
+  }
+
+  public pesquisaProduto(compra: Compra){
+    this.navCtrl.push(PesquisaProdutoPage, {
+      compraSelecionada: compra
+    });
   }
 
   // ionViewDidLoad() {

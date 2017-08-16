@@ -36,6 +36,10 @@ export class Produto{
         return this._valor; 
     }
 
+    get valorFormatado(){
+        return this._valor.toFixed(2);
+    }
+
     get descricao(){
         return `${this.nome} - ${this.marca}`
     }
