@@ -40,7 +40,23 @@
       </ion-item-options>
 
       <ion-item (click)="detalharCompra(compra)">
-        <strong>Compra de {{compra.dataFormatada}}</strong>   <span *ngIf="total">{{compra.valorFormatado}}</span>
+
+        <ion-grid no-padding>
+          <ion-row>
+            <ion-col col-8>
+
+              <strong>Compra de {{compra.dataFormatada}}</strong>
+
+            </ion-col>
+            <ion-col col-4>
+
+              <span *ngIf="total">{{compra.valorFormatado}}</span>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- <strong>Compra de {{compra.dataFormatada}}</strong>   <span *ngIf="total">{{compra.valorFormatado}}</span> -->
+
       </ion-item>
 
       <ion-item-options side="right">
