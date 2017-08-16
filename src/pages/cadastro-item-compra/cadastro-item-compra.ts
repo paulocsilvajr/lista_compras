@@ -28,10 +28,6 @@ export class CadastroItemCompraPage {
 
     this.produtoCompra = this.navParams.get('produtoCompraSelecionado');
 
-    // 
-    console.log(this.produtoCompra);
-    // 
-
     if (this.produtoCompra == undefined){
 
       this.produto = this.navParams.get('produtoSelecionado');
@@ -41,9 +37,6 @@ export class CadastroItemCompraPage {
       this.alteracao = false;
       
     } else {  
-      // 
-      console.log(this.produtoCompra);
-      // 
 
       this.produto = this.produtoCompra.produto;
 
@@ -52,11 +45,11 @@ export class CadastroItemCompraPage {
     }
 
     this.compra  = this.navParams.get('compraSelecionada');
-
-    // 
-    console.log(this.compra);
-    // 
     
+  }
+
+  salvarProduto(){
+    this.alteracao? this.alterarProduto(): this.inserirProduto();
   }
 
   inserirProduto(){
@@ -64,6 +57,10 @@ export class CadastroItemCompraPage {
 
     this.navCtrl.pop()
     .then(() => this.navCtrl.pop());
+  }
+
+  alterarProduto(){
+    this.navCtrl.pop();
   }
 
   // ionViewDidLoad() {
