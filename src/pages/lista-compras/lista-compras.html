@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-fab right bottom padding>
-    <button ion-fab>
+    <button ion-fab (click)="cadastrarCompra()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
@@ -31,7 +31,13 @@
     </ion-item>
 
     <!-- evento (press) é invocado ao clique/toque longo -->
-    <ion-item-sliding *ngFor='let compra of listaCompras'>
+    <ion-item-sliding *ngFor='let compra of listarCompras()'>
+
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="alertaAlteracao(compra)">
+          Alterar
+        </button>
+      </ion-item-options>
 
       <ion-item (click)="detalharCompra(compra)">
         <strong>Compra de {{compra.dataFormatada}}</strong>   <span *ngIf="total">{{compra.valorFormatado}}</span>

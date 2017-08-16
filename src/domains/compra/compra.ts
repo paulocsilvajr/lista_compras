@@ -7,13 +7,17 @@ export class Compra{
 
     constructor(
         private _data: Date = new Date(),
-        private _produtoCompra: ProdutoCompra[]
+        private _produtoCompra: ProdutoCompra[] = []
     ){
 
     }
 
     set id(id: number){
         this._id = id;
+    }
+
+    set data(data: string){
+        this._data = new Date(data);
     }
 
     get valor(){
@@ -41,7 +45,7 @@ export class Compra{
     }
 
     get dataFormatada(){
-        return `${this._data.getDay()}/${this._data.getMonth() + 1}/${this._data.getFullYear()}`;
+        return `${this._data.getDate()}/${this._data.getMonth() + 1}/${this._data.getFullYear()}`;
     }
 
     get produtos(){

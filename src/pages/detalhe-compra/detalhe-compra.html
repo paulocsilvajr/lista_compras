@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content padding>
   <ion-card>
     
     <ion-card-header>
@@ -23,6 +23,12 @@
     <ion-list>
 
       <ion-item-sliding *ngFor="let item of compra.produtos">
+
+        <ion-item-options side="left">
+          <button ion-button color="secondary" (click)="alertaAlteracao(item)">
+            Alterar
+          </button>
+        </ion-item-options>
 
         <ion-item>
 
@@ -48,12 +54,14 @@
 
   </ion-card>
 
-  <ion-buttons>
-    <button ion-button icon-left block (click)="pesquisaProduto(compra)">
-      <ion-icon name="add"></ion-icon>
-      Produtos
-    </button>
-  </ion-buttons>
+  <div padding>
+    <ion-buttons>
+      <button ion-button icon-left block (click)="pesquisaProduto(compra)">
+        <ion-icon name="add"></ion-icon>
+        Produtos
+      </button>
+    </ion-buttons>
+  </div>
 
 </ion-content>
 

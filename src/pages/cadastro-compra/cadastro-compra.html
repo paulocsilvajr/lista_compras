@@ -1,0 +1,28 @@
+<!--
+  Generated template for the CadastroCompraPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastro de compra</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Data</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="compra.data"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button (click)="salvarCompra()" block>
+      Salvar
+    </button>
+  </div>
+
+</ion-content>

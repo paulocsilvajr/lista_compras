@@ -4,6 +4,8 @@ import { Compra } from '../../domains/compra/compra';
 import { ProdutoCompra } from '../../domains/compra/produto-compra';
 import { Produto } from '../../domains/produto/produto';
 import { DetalheCompraPage } from '../../pages/detalhe-compra/detalhe-compra';
+import { CadastroCompraPage } from '../../pages/cadastro-compra/cadastro-compra';
+import { ListaCompra } from '../../domains/compra/lista-compra';
 
 /**
  * Generated class for the ListaComprasPage page.
@@ -19,7 +21,7 @@ import { DetalheCompraPage } from '../../pages/detalhe-compra/detalhe-compra';
 })
 export class ListaComprasPage {
   
-  public listaCompras : Compra[] = [];
+  public listaCompras : ListaCompra = new ListaCompra();
   public total: boolean = false; 
 
   constructor(
@@ -37,8 +39,24 @@ export class ListaComprasPage {
       buttons: [{
         text: 'Sim',
         handler: () => {
-          console.log('Excluído ' + compra.dataFormatada);
           this.excluirCompra(compra);
+          console.log('Excluído ' + compra.dataFormatada);
+        }
+      },{
+        text: 'Não'
+      }]
+    }).present();
+  }
+
+  public alertaAlteracao(compra: Compra){
+    this._alertCtrl.create({
+      title: 'Atenção',
+      subTitle: `Alterar a compra de ${compra.dataFormatada}`,
+      buttons: [{
+        text: 'Sim',
+        handler: () => {
+          this.alterarCompra(compra);
+          console.log('Alterado ' + compra.dataFormatada);          
         }
       },{
         text: 'Não'
@@ -47,9 +65,14 @@ export class ListaComprasPage {
   }
 
   private excluirCompra(compra: Compra){
-    let posicao = this.listaCompras.indexOf(compra);
+    this.listaCompras.removerCompra(compra);
+  }
 
-    this.listaCompras.splice(posicao, 1);
+  private alterarCompra(compra: Compra){
+    this.navCtrl.push(CadastroCompraPage, {
+      listaCompras: this.listaCompras,
+      compraSelecionada: compra
+    });
   }
 
   public exibirTotal(status: boolean){
@@ -70,7 +93,7 @@ export class ListaComprasPage {
     produto_compra2 = new ProdutoCompra(produto2, 3, produto2.valor, true);
     lista = [];
     lista.push(produto_compra2);
-    let compra2 = new Compra(new Date(), lista);
+    let compra2 = new Compra(new Date(2016, (2 - 1), 15), lista);
 
     produto2 = new Produto('Feijão', 'Esp', 'pt', 1);
     produto_compra2 = new ProdutoCompra(produto2, 10);
@@ -109,16 +132,26 @@ export class ListaComprasPage {
     produto2 = new Produto('Feijão', 'Esp', 'pt', 12);
     produto_compra2 = new ProdutoCompra(produto2, 120);
     lista.push(produto_compra2);
-    let compra3 = new Compra(new Date(), lista);
+    let compra3 = new Compra(new Date(2000, 0, 31), lista);
 
-    this.listaCompras.push(compra1);
-    this.listaCompras.push(compra2);
-    this.listaCompras.push(compra3);
+    this.listaCompras.adicionarCompra(compra1);
+    this.listaCompras.adicionarCompra(compra2);
+    this.listaCompras.adicionarCompra(compra3);
   }
 
   detalharCompra(compra: Compra){
     this.navCtrl.push(DetalheCompraPage, 
       { compraSelecionada: compra });
+  }
+
+  cadastrarCompra(){
+    this.navCtrl.push(CadastroCompraPage, {
+      listaCompras: this.listaCompras
+    })
+  }
+  
+  listarCompras(){
+    return this.listaCompras.compras.reverse();
   }
 
   // ionViewDidLoad() {

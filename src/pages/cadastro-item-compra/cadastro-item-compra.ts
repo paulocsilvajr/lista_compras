@@ -22,14 +22,41 @@ export class CadastroItemCompraPage {
   public produto: Produto;
   public produtoCompra: ProdutoCompra;
   public compra: Compra;
+  private alteracao: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
-    this.produto = this.navParams.get('produtoSelecionado');
 
-    this.produtoCompra = new ProdutoCompra(this.produto);
-    
+    this.produtoCompra = this.navParams.get('produtoCompraSelecionado');
+
+    // 
+    console.log(this.produtoCompra);
+    // 
+
+    if (this.produtoCompra == undefined){
+
+      this.produto = this.navParams.get('produtoSelecionado');
+
+      this.produtoCompra = new ProdutoCompra(this.produto);
+
+      this.alteracao = false;
+      
+    } else {  
+      // 
+      console.log(this.produtoCompra);
+      // 
+
+      this.produto = this.produtoCompra.produto;
+
+      this.alteracao = true;
+      
+    }
+
     this.compra  = this.navParams.get('compraSelecionada');
+
+    // 
+    console.log(this.compra);
+    // 
+    
   }
 
   inserirProduto(){

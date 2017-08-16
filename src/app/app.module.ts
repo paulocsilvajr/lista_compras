@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 // imports usuário
+import { CadastroCompraPage } from '../pages/cadastro-compra/cadastro-compra';
 import { CadastroItemCompraPage } from '../pages/cadastro-item-compra/cadastro-item-compra';
 import { CadastroProdutoPage } from '../pages/cadastro-produto/cadastro-produto';
 import { DetalheCompraPage } from '../pages/detalhe-compra/detalhe-compra';
@@ -18,6 +19,7 @@ import { PesquisaProdutoPage } from '../pages/pesquisa-produto/pesquisa-produto'
   declarations: [
     MyApp,
     HomePage,
+    CadastroCompraPage,
     CadastroItemCompraPage,
     CadastroProdutoPage,
     DetalheCompraPage,
@@ -32,6 +34,7 @@ import { PesquisaProdutoPage } from '../pages/pesquisa-produto/pesquisa-produto'
   entryComponents: [
     MyApp,
     HomePage,
+    CadastroCompraPage,
     CadastroItemCompraPage,
     CadastroProdutoPage,
     DetalheCompraPage,

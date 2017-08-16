@@ -7,38 +7,37 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>CadastroItemCompra</ion-title>
+    <ion-title>Cadastro de Item</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-  <ion-card>
+<ion-content padding>
     
-    <ion-list>
+  <ion-list>
 
-      <ion-item>
-        <ion-label fixed>Produto</ion-label>
-        <ion-input type="text" [value]="produto.descricao" readonly></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-label fixed>Produto</ion-label>
+      <ion-input type="text" [value]="produto.descricao" readonly></ion-input>
+    </ion-item>
 
-      <ion-item>
-        <ion-label fixed>Quantidade</ion-label>
-        <ion-input type="number" min="1" value="1" [(ngModel)]="produtoCompra.quantidade"></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-label fixed>Quantidade</ion-label>
+      <ion-input type="number" min="1" value="1" [(ngModel)]="produtoCompra.quantidade"></ion-input>
+    </ion-item>
 
-      <ion-item>
-        <ion-label fixed>Preço</ion-label>
-        <ion-input type="text" [value]="produto.valorFormatado" [(ngModel)]="produtoCompra.valor"></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-label fixed>Preço</ion-label>
+      <ion-input type="text" [value]="produto.valorFormatado" [(ngModel)]="produtoCompra.valor"></ion-input>
+    </ion-item>
 
-    </ion-list>
+  </ion-list>
 
-  </ion-card>
-
-  <ion-buttons>
-    <button ion-button block (click)="inserirProduto()">Adicionar produto</button>
-  </ion-buttons>
+  <div padding>
+    <ion-buttons>
+      <button ion-button block (click)="inserirProduto()">Adicionar produto</button>
+    </ion-buttons>
+  </div>
 
 </ion-content>

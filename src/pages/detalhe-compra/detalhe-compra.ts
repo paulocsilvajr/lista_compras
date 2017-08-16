@@ -5,6 +5,8 @@ import { Compra } from '../../domains/compra/compra';
 import { ProdutoCompra } from '../../domains/compra/produto-compra';
 import { PesquisaProdutoPage } from '../../pages/pesquisa-produto/pesquisa-produto';
 
+import { CadastroItemCompraPage } from '../../pages/cadastro-item-compra/cadastro-item-compra';
+
 /**
  * Generated class for the DetalheCompraPage page.
  *
@@ -63,15 +65,16 @@ export class DetalheCompraPage {
     
   }
 
-  public alertaExclusao(produto: ProdutoCompra){
+  alertaExclusao(produto: ProdutoCompra){
     this._alertCtrl.create({
       title: 'Atenção',
-      subTitle: `Excluir a produto ${produto.produto.descricao}`,
+      subTitle: `Remover o produto ${produto.produto.descricao}`,
       buttons: [{
         text: 'Sim',
         handler: () => {
-          console.log('Excluído ' + produto.produto.descricao);
           this.excluirProduto(produto);
+
+          console.log('Excluído ' + produto.produto.descricao);          
         }
       },{
         text: 'Não'
@@ -79,13 +82,43 @@ export class DetalheCompraPage {
     }).present();
   }
 
-  private excluirProduto(produto: ProdutoCompra){
-    this.compra.removeProduto(produto);
+  alertaAlteracao(produto: ProdutoCompra){
+    this._alertCtrl.create({
+      title: 'Atenção',
+      subTitle: `Alterar o produto ${produto.produto.descricao}`,
+      buttons: [{
+        text: 'Sim',
+        handler: () => {
+          this.alterarProduto(produto);
 
+          console.log('Alterado ' + produto.produto.descricao);
+        }
+      },{
+        text: 'Não'
+      }]
+    }).present();
+  }
+
+  private atualizarStatus(produto: ProdutoCompra){
     if (produto.comprado)
       this.quantidadeComprada = this.getQuantidadeComprada();
     else
       this.verificarSeCompleto();
+  }
+
+  private excluirProduto(produto: ProdutoCompra){
+    this.compra.removeProduto(produto);
+
+    this.atualizarStatus(produto);
+  }
+
+  private alterarProduto(produto: ProdutoCompra){
+    this.navCtrl.push(CadastroItemCompraPage, {
+      produtoCompraSelecionado: produto, 
+      compraSelecionada: this.compra
+    });
+
+    // this.atualizarStatus(produto);
   }
 
   public pesquisaProduto(compra: Compra){

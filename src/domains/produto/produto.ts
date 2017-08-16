@@ -4,10 +4,10 @@ export class Produto{
     private _id: number;
 
     constructor(
-        private _nome: string,
-        private _marca: string,
-        private _unidade: string = 'UN',
-        private _valor: number = 0.0
+        public nome: string,
+        public marca: string,
+        public unidade: string = 'UN',
+        public valor: number = 0.0
     ){
 
     }
@@ -20,24 +20,8 @@ export class Produto{
         return this._id;
     }
 
-    get nome(){
-        return this._nome;
-    }
-
-    get marca(){
-        return this._marca;
-    }
-
-    get unidade(){
-        return this._unidade;
-    }
-
-    get valor(){
-        return this._valor; 
-    }
-
     get valorFormatado(){
-        return this._valor.toFixed(2);
+        return this.valor.toFixed(2);
     }
 
     get descricao(){
