@@ -5,6 +5,8 @@ import { CadastroItemCompraPage } from '../../pages/cadastro-item-compra/cadastr
 import { Produto } from '../../domains/produto/produto';
 import { Compra } from '../../domains/compra/compra';
 
+import { ListaProduto } from '../../domains/produto/lista-produto';
+
 /**
  * Generated class for the PesquisaProdutoPage page.
  *
@@ -20,14 +22,14 @@ import { Compra } from '../../domains/compra/compra';
 
 export class PesquisaProdutoPage {
 
-  public listaProdutos: Produto[] = [];
+  public listaProdutos: ListaProduto = new ListaProduto();
   public compra: Compra;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     this.compra = this.navParams.get('compraSelecionada');
 
-    this.listaProdutoExemplo();    
+    this.listaProdutoExemplo();
 
   }
 
@@ -44,14 +46,15 @@ export class PesquisaProdutoPage {
     var valor = event.target.value;
 
     if (valor && valor.trim() != ''){
-      this.listaProdutos = this.listaProdutos.filter( (produto) => {
-        return (produto.nome.toLowerCase().indexOf(valor.toLowerCase()) > -1);
-      });
+      this.listaProdutos.filtrarProduto(valor);
+      // this.listaProdutos = this.listaProdutos.filter( (produto) => {
+      //   return (produto.nome.toLowerCase().indexOf(valor.toLowerCase()) > -1);
+      // });
     }
   }
 
   listaProdutoExemplo(){
-    this.listaProdutos = [
+    let lista: Produto[] = [
       new Produto('p1', 'm1', 'un', 2.5),
       new Produto('p2', 'm2', 'un', 2.5),
       new Produto('p3', 'm3', 'un', 2.5),
@@ -68,6 +71,11 @@ export class PesquisaProdutoPage {
       new Produto('p14', 'm14', 'un', 2.5),
       new Produto('p15', 'm15', 'un', 2.5)
     ]
+
+    lista.forEach(
+      (produto) => this.listaProdutos.adicionarProduto(produto)
+    );
+
   }
 
   // ionViewDidLoad() {
