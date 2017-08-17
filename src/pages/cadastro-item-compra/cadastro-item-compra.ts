@@ -53,13 +53,17 @@ export class CadastroItemCompraPage {
   }
 
   inserirProduto(){
-    this.compra.produtos.push(this.produtoCompra);
+    // this.compra.produtos.push(this.produtoCompra);
+    this.compra.adicionarProduto(this.produtoCompra);
+    
 
     this.navCtrl.pop()
     .then(() => this.navCtrl.pop());
   }
 
   alterarProduto(){
+    this.compra.alterarProduto(this.produtoCompra);
+
     this.navCtrl.pop();
   }
 

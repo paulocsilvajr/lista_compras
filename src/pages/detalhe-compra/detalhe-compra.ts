@@ -107,7 +107,7 @@ export class DetalheCompraPage {
   }
 
   private excluirProduto(produto: ProdutoCompra){
-    this.compra.removeProduto(produto);
+    this.compra.removerProduto(produto);
 
     this.atualizarStatus(produto);
   }

@@ -67,8 +67,16 @@ export class Compra{
         return this._produtoCompra;
     }
 
-    removeProduto(produto: ProdutoCompra){
+    removerProduto(produto: ProdutoCompra){
         let posicao = this._produtoCompra.indexOf(produto);
         this._produtoCompra.splice(posicao, 1);
+    }
+
+    alterarProduto(produto: ProdutoCompra){
+        // lógica dao de alteracao
+    }
+
+    adicionarProduto(produto: ProdutoCompra){
+        this._produtoCompra.push(produto);
     }
 }

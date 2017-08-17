@@ -24,7 +24,7 @@
 
   <ion-list>
 
-    <ion-item-sliding *ngFor="let produto of listaProdutos.produtos">
+    <ion-item-sliding *ngFor="let produto of listarProdutos()">
       <ion-item-options side="left">
         <button ion-button color="secondary" (click)="alertaAlteracao(produto)">
           Alterar
