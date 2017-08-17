@@ -7,12 +7,45 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>CadastroProduto</ion-title>
+    <ion-title>Cadastro de Produto</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+
+    <ion-list>
+
+      <ion-list-header>
+        {{produto.descricao}}
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label fixed>Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="produto.nome"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label fixed>Marca</ion-label>
+        <ion-input type="text" [(ngModel)]="produto.marca"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label fixed>Unidade</ion-label>
+        <ion-input type="text" [(ngModel)]="produto.unidade"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label fixed>Valor</ion-label>
+          <ion-input type="number" step="0.5" min="0.0" [(ngModel)]="produto.valor"></ion-input>
+        </ion-item>
+  
+    </ion-list>
+  
+    <div padding>
+      <ion-buttons>
+        <button ion-button block (click)="salvarProduto()">Salvar</button>
+      </ion-buttons>
+    </div>
 
 </ion-content>

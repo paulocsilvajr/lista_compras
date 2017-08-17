@@ -28,8 +28,23 @@ export class Compra{
         return total;
     }
 
+    get valorComprado(){
+        let total = 0.0;
+
+        this._produtoCompra.forEach( item => {
+            if (item.comprado)
+                total += (item.valor * item.quantidade)
+        } );
+
+        return total;
+    }
+
     get valorFormatado(){
         return `R$ ${this.valor.toFixed(2)}`;
+    }
+
+    get valorCompradoFormatado(){
+        return `R$ ${this.valorComprado.toFixed(2)}`;
     }
 
     get date(){

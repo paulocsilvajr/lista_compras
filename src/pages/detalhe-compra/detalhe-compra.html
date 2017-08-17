@@ -17,7 +17,7 @@
   <ion-card>
     
     <ion-card-header>
-      Compra do dia {{compra.dataFormatada}}
+      <strong>Compra do dia {{compra.dataFormatada}}</strong>
     </ion-card-header>
 
     <ion-list>
@@ -49,7 +49,19 @@
         </ion-item-options>
 
       </ion-item-sliding>
-      
+
+      <ion-list-header>
+        <strong>Total</strong>
+      </ion-list-header>
+      <ion-item>
+        <span item-left>Geral</span>
+        <span item-right><strong>{{ compra.valorFormatado }}</strong></span>
+      </ion-item>
+      <ion-item>
+        <span item-left>Comprado</span>
+        <span item-right><strong>{{ compra.valorCompradoFormatado }}</strong></span>
+      </ion-item>
+
     </ion-list>
 
   </ion-card>

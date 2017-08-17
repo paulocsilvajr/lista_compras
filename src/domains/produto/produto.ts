@@ -4,8 +4,8 @@ export class Produto{
     private _id: number;
 
     constructor(
-        public nome: string,
-        public marca: string,
+        public nome: string = '',
+        public marca: string = '',
         public unidade: string = 'UN',
         public valor: number = 0.0
     ){
@@ -25,6 +25,9 @@ export class Produto{
     }
 
     get descricao(){
-        return `${this.nome} - ${this.marca}`
+        if (this.marca != '')
+            return `${this.nome} - ${this.marca}`
+        else 
+            return `${this.nome}`
     }
 }

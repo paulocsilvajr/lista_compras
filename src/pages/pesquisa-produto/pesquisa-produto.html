@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-fab right bottom padding>
-    <button ion-fab>
+    <button ion-fab (click)="cadastroProduto()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
@@ -26,7 +26,7 @@
 
     <ion-item-sliding *ngFor="let produto of listaProdutos.produtos">
       <ion-item-options side="left">
-        <button ion-button color="secondary">
+        <button ion-button color="secondary" (click)="alertaAlteracao(produto)">
           Alterar
         </button>
       </ion-item-options>
@@ -36,7 +36,7 @@
       </ion-item>
 
       <ion-item-options side="right">
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="alertaRemocao(produto)">
           Remover
         </button>
       </ion-item-options>

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { CadastroItemCompraPage } from '../../pages/cadastro-item-compra/cadastro-item-compra';
+import { CadastroProdutoPage } from '../../pages/cadastro-produto/cadastro-produto';
 import { Produto } from '../../domains/produto/produto';
 import { Compra } from '../../domains/compra/compra';
-
 import { ListaProduto } from '../../domains/produto/lista-produto';
+
 
 /**
  * Generated class for the PesquisaProdutoPage page.
@@ -25,7 +26,7 @@ export class PesquisaProdutoPage {
   public listaProdutos: ListaProduto = new ListaProduto();
   public compra: Compra;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _alertCtrl: AlertController) {
 
     this.compra = this.navParams.get('compraSelecionada');
 
@@ -51,6 +52,58 @@ export class PesquisaProdutoPage {
       //   return (produto.nome.toLowerCase().indexOf(valor.toLowerCase()) > -1);
       // });
     }
+  }
+
+  alterarProduto(produto: Produto){
+    // this.listaProdutos.alterarProduto(produto);
+    this.navCtrl.push(CadastroProdutoPage, {
+      'listaProdutosSelecionada': this.listaProdutos,
+      'produtoSelecionado': produto
+    });
+  }
+
+  removerProduto(produto: Produto){
+    this.listaProdutos.removerProduto(produto);
+  }
+
+  alertaAlteracao(produto: Produto){
+    this._alertCtrl.create({
+      title: 'Atenção',
+      subTitle: `Alterar o produto ${produto.descricao}`,
+      buttons: [{
+        text: 'Sim',
+        handler: () => {
+          this.alterarProduto(produto);
+
+          console.log('Alterado ' + produto.descricao);          
+        }
+      },{
+        text: 'Não'
+      }]
+    }).present();
+  }
+
+  alertaRemocao(produto: Produto){
+    this._alertCtrl.create({
+      title: 'Atenção',
+      subTitle: `Remover o produto ${produto.descricao}`,
+      buttons: [{
+        text: 'Sim',
+        handler: () => {
+          this.removerProduto(produto);
+
+          console.log('Excluído ' + produto.descricao);          
+        }
+      },{
+        text: 'Não'
+      }]
+    }).present();
+  }
+
+  cadastroProduto(){
+    this.navCtrl.push(CadastroProdutoPage, {
+      'listaProdutosSelecionada': this.listaProdutos
+    });
   }
 
   listaProdutoExemplo(){
