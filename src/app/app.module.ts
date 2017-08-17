@@ -15,6 +15,25 @@ import { DetalheCompraPage } from '../pages/detalhe-compra/detalhe-compra';
 import { ListaComprasPage } from '../pages/lista-compras/lista-compras';
 import { PesquisaProdutoPage } from '../pages/pesquisa-produto/pesquisa-produto';
 
+import { ProdutoDao } from '../domains/produto/produto-dao';
+import { CompraDao } from '../domains/compra/compra-dao';
+
+import { Storage } from '@ionic/storage';
+
+function providerStorageProdutos(){
+  return new Storage({
+    name: 'listacompras',
+    storeName: 'produtos'
+  });
+}
+
+// function providerStorageCompras(){
+//   return new Storage({
+//     name: 'listacompras',
+//     storeName: 'compras'
+//   });
+// }
+
 @NgModule({
   declarations: [
     MyApp,
@@ -44,7 +63,11 @@ import { PesquisaProdutoPage } from '../pages/pesquisa-produto/pesquisa-produto'
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    // {provide: Storage, useFactory: providerStorageCompras},
+    CompraDao,
+    {provide: Storage, useFactory: providerStorageProdutos},
+    ProdutoDao 
   ]
 })
 export class AppModule {}

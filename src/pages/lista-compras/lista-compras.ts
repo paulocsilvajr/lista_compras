@@ -7,6 +7,8 @@ import { DetalheCompraPage } from '../../pages/detalhe-compra/detalhe-compra';
 import { CadastroCompraPage } from '../../pages/cadastro-compra/cadastro-compra';
 import { ListaCompra } from '../../domains/compra/lista-compra';
 
+import { ProdutoDao } from '../../domains/produto/produto-dao';
+
 /**
  * Generated class for the ListaComprasPage page.
  *
@@ -24,10 +26,15 @@ export class ListaComprasPage {
   public listaCompras : ListaCompra = new ListaCompra();
   public total: boolean = false; 
 
+  ////////////////////////////
+  // REMOVER _dao: Produto de construtor
+  ///////////////////////////
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private _alertCtrl: AlertController) {
+    private _alertCtrl: AlertController,
+    private _dao: ProdutoDao) {
 
     this.listaExemplo();
   }
