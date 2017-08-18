@@ -1,36 +1,32 @@
 import { Produto } from '../../domains/produto/produto';
 
 export class ListaProduto{
-    private lista: Produto[];
+    public _lista: Produto[];
 
     constructor(){
         this.limparProdutos();
     }
 
     get produtos(){
-        return this.lista;
+        return this._lista;
     }
 
     adicionarProduto(produto: Produto){
-        this.lista.push(produto);
+        this._lista.push(produto);
     }
 
     removerProduto(produto: Produto){
-        let indice: number = this.lista.indexOf(produto);
+        let indice: number = this._lista.indexOf(produto);
 
-        this.lista.splice(indice, 1);
-    }
-
-    alterarProduto(produto: Produto){
-        // lógica dao para alteração do produto
+        this._lista.splice(indice, 1);
     }
 
     limparProdutos(){
-        this.lista = [];
+        this._lista = [];
     }
 
     filtrarProduto(nomeProduto: string){
-        this.lista = this.lista.filter( (produto) => {
+        this._lista = this._lista.filter( (produto) => {
             return (produto.nome.toLowerCase().indexOf(nomeProduto.toLowerCase()) > -1);
         });
     }

@@ -3,13 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 
 import { Produto } from '../../domains/produto/produto';
 import { ListaProduto } from '../../domains/produto/lista-produto';
-
-/**
- * Generated class for the CadastroProdutoPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { ProdutoDao } from '../../domains/produto/produto-dao';
 
 @IonicPage()
 @Component({
@@ -22,7 +16,11 @@ export class CadastroProdutoPage {
   public listaProdutos: ListaProduto;
   public alteracao: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _toast: ToastController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private _toast: ToastController,
+    private _dao: ProdutoDao) {
 
     this.listaProdutos = this.navParams.get('listaProdutosSelecionada');
 
@@ -48,16 +46,15 @@ export class CadastroProdutoPage {
     } else {
 
       if (this.alteracao)
-        this.listaProdutos.alterarProduto(this.produto)
-      else
-        this.listaProdutos.adicionarProduto(this.produto);
+        // this.listaProdutos.alterarProduto(this.produto)
+        this._dao.salvarProdutos(this.listaProdutos.produtos);
+      else{
+        this.listaProdutos.adicionarProduto(this.produto)
+
+        this._dao.salvarProdutos(this.listaProdutos.produtos)
+      }
 
       this.navCtrl.pop();
     }
   }
-
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad CadastroProdutoPage');
-  // }
-
 }

@@ -36,7 +36,7 @@
             {{item.produto.descricao}}
           </ion-label>
           <div item-content>
-            <strong>{{item.quantidade}}</strong> {{item.produto.unidade}}
+            <strong>{{item.quantidade}}</strong> {{item.produto.unidadeFormatada}}
           </div>
           <ion-toggle color="secondary" [checked]="item.comprado" #toggle (ionChange)="atualizarComprados(toggle.checked, item)"></ion-toggle>
 

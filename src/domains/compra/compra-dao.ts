@@ -6,6 +6,6 @@ import { Compra } from '../../domains/compra/compra';
 @Injectable()
 export class CompraDao{
     constructor(private _storage: Storage){
-        this._storage.set('teste2', {valor: 456});
+        // this._storage.set('teste2', {valor: 456});
     }
 }

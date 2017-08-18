@@ -16,14 +16,14 @@ import { ListaComprasPage } from '../pages/lista-compras/lista-compras';
 import { PesquisaProdutoPage } from '../pages/pesquisa-produto/pesquisa-produto';
 
 import { ProdutoDao } from '../domains/produto/produto-dao';
-import { CompraDao } from '../domains/compra/compra-dao';
+import { ListaProduto } from '../domains/produto/lista-produto';
 
 import { Storage } from '@ionic/storage';
 
 function providerStorageProdutos(){
   return new Storage({
     name: 'listacompras',
-    storeName: 'produtos'
+    storeName: 'dados'
   });
 }
 
@@ -64,10 +64,9 @@ function providerStorageProdutos(){
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    // {provide: Storage, useFactory: providerStorageCompras},
-    CompraDao,
     {provide: Storage, useFactory: providerStorageProdutos},
-    ProdutoDao 
+    ProdutoDao,
+    ListaProduto
   ]
 })
 export class AppModule {}
