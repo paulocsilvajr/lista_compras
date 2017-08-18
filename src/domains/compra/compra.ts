@@ -2,8 +2,6 @@ import { ProdutoCompra } from '../../domains/compra/produto-compra';
 // import { Produto } from '../../domains/produto/produto';
 
 export class Compra{
-    
-    private _id: number = 0;
 
     constructor(
         private _data: Date = new Date(),
@@ -12,16 +10,8 @@ export class Compra{
 
     }
 
-    set id(id: number){
-        this._id = id;
-    }
-
     set data(data: string){
         this._data = new Date(data);
-    }
-
-    get id(){
-        return this._id;
     }
 
     get valor(){
