@@ -3,7 +3,7 @@ import { ProdutoCompra } from '../../domains/compra/produto-compra';
 
 export class Compra{
     
-    private _id: number;
+    private _id: number = 0;
 
     constructor(
         private _data: Date = new Date(),
@@ -18,6 +18,10 @@ export class Compra{
 
     set data(data: string){
         this._data = new Date(data);
+    }
+
+    get id(){
+        return this._id;
     }
 
     get valor(){

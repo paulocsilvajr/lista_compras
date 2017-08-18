@@ -21,11 +21,6 @@ export class ProdutoDao{
     }
 
     listarProdutos(): Promise<Produto[]>{
-        let loader = this._loadingCtrl.create( {
-            content: 'Buscando produtos. Aguarde ...'
-        } );
-
-        loader.present();
 
         this._produtos = [];
 
@@ -36,14 +31,9 @@ export class ProdutoDao{
                 this._produtos.push(new Produto(tupla.nome, tupla.marca, tupla.unidade, tupla.valor))
             );
 
-            loader.dismiss();
-
             return this._produtos
         })
         .catch( () => {
-
-            loader.dismiss();            
-
             return this._produtos;
         });
     }

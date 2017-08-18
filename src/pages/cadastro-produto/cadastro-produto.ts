@@ -37,7 +37,7 @@ export class CadastroProdutoPage {
   salvarProduto(){
     if (this.produto.nome == ''){
       this._toast.create({
-        message: 'Nome não deve ser vazio!',
+        message: 'Campo nome deve ser preenchido!',
         duration: 2000,
         position: 'middle'
       }).present();
@@ -47,11 +47,13 @@ export class CadastroProdutoPage {
 
       if (this.alteracao)
         // this.listaProdutos.alterarProduto(this.produto)
-        this._dao.salvarProdutos(this.listaProdutos.produtos);
+        // this._dao.salvarProdutos(this.listaProdutos.produtos);
+        console.log();
+        
       else{
         this.listaProdutos.adicionarProduto(this.produto)
 
-        this._dao.salvarProdutos(this.listaProdutos.produtos)
+        // this._dao.salvarProdutos(this.listaProdutos.produtos)
       }
 
       this.navCtrl.pop();

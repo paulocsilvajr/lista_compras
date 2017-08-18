@@ -1,7 +1,7 @@
 
 export class Produto{
     
-    private _id: number;
+    private _id: number = 0;
 
     constructor(
         public nome: string = '',
