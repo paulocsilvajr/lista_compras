@@ -6,6 +6,9 @@ import { ProdutoCompra } from '../../domains/compra/produto-compra';
 import { PesquisaProdutoPage } from '../../pages/pesquisa-produto/pesquisa-produto';
 
 import { CadastroItemCompraPage } from '../../pages/cadastro-item-compra/cadastro-item-compra';
+import { ListaCompra } from '../../domains/compra/lista-compra';
+import { CompraDao } from '../../domains/compra/compra-dao';
+
 
 /**
  * Generated class for the DetalheCompraPage page.
@@ -24,16 +27,26 @@ export class DetalheCompraPage {
   public compra: Compra;
   public quantidadeComprada: number = 0;
   public completo: boolean = false;
+  private listaCompra: ListaCompra;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public _alertCtrl: AlertController) {
+    public _alertCtrl: AlertController,
+    private _dao: CompraDao) {
     this.compra = this.navParams.get('compraSelecionada');
+    this.listaCompra = this.navParams.get('listaCompra');
 
     this.quantidadeComprada = this.getQuantidadeComprada();
 
     this.verificarSeCompleto();
+  }
+
+
+  ionViewWillEnter(){
+    this._dao.salvarCompras(this.listaCompra.compras);
+    console.log('>>> Atualizado lista de compras');
+    
   }
 
   private verificarSeCompleto(){
@@ -110,6 +123,8 @@ export class DetalheCompraPage {
     this.compra.removerProduto(produto);
 
     this.atualizarStatus(produto);
+
+    this._dao.salvarCompras(this.listaCompra.compras);
   }
 
   private alterarProduto(produto: ProdutoCompra){

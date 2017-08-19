@@ -35,8 +35,8 @@ export class CadastroItemCompraPage {
       this.produtoCompra = new ProdutoCompra(this.produto);
 
       this.alteracao = false;
-      
-    } else {  
+
+    } else {
 
       this.produto = this.produtoCompra.produto;
 

@@ -143,14 +143,18 @@ export class PesquisaProdutoPage {
   // }
 
   carregarLista(){
-    return this._dao.listarProdutos().then( dado => {
+    return this._dao.listarProdutos()
+    .then( produtos => {
       
       this.listaProdutos.limparProdutos();
 
-      dado.forEach( produto => {
+      produtos.forEach( produto => {
         this.listaProdutos.adicionarProduto(produto)
       });
-    });
+    })
+    .catch( () => 
+      this.listaProdutos.limparProdutos()
+    );
   }
 
 }

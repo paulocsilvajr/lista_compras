@@ -42,7 +42,8 @@ export class CompraDao{
 
                 let compra = new Compra(
                     new Date(tupla._data),
-                    produtoCompra)
+                    produtoCompra,
+                    tupla.descricao)
 
                 this._compras.push(compra);
 

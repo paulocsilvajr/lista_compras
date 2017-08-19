@@ -5,7 +5,8 @@ export class Compra{
 
     constructor(
         private _data: Date = new Date(),
-        private _produtoCompra: ProdutoCompra[] = []
+        private _produtoCompra: ProdutoCompra[] = [],
+        public descricao: string = 'Compra de'
     ){
 
     }

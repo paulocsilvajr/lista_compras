@@ -18,6 +18,10 @@
       <ion-label stacked>Data</ion-label>
       <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="compra.data"></ion-datetime>
     </ion-item>
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-input [(ngModel)]="compra.descricao"></ion-input>
+    </ion-item>
   </ion-list>
   <div padding>
     <button ion-button (click)="salvarCompra()" block>

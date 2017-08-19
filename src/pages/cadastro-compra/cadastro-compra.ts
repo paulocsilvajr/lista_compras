@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ListaCompra } from '../../domains/compra/lista-compra';
 import { Compra } from '../../domains/compra/compra';
+import { CompraDao } from '../../domains/compra/compra-dao';
 
 /**
  * Generated class for the CadastroCompraPage page.
@@ -21,7 +22,11 @@ export class CadastroCompraPage {
   public compra: Compra;
   private alteracao: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private _dao: CompraDao) {
+
     this.listaCompras = this.navParams.get('listaCompras');
     let compra = this.navParams.get('compraSelecionada');
 
@@ -39,9 +44,12 @@ export class CadastroCompraPage {
 
   salvarCompra(){
     if (this.alteracao){
-      this.listaCompras.alterarCompra(this.compra);
+      this._dao.salvarCompras(this.listaCompras.compras);
+      // this.listaCompras.alterarCompra(this.compra);
     } else {
       this.listaCompras.adicionarCompra(this.compra);
+
+      this._dao.salvarCompras(this.listaCompras.compras);
     }
 
     this.navCtrl.pop();

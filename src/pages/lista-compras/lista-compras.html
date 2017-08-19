@@ -43,12 +43,12 @@
 
         <ion-grid no-padding>
           <ion-row>
-            <ion-col col-8>
+            <ion-col col-8 text-wrap>
 
-              <strong>Compra de {{compra.dataFormatada}}</strong>
+              <strong>{{compra.descricao}} {{compra.dataFormatada}}</strong>
 
             </ion-col>
-            <ion-col col-4>
+            <ion-col col-4 text-wrap>
 
               <span *ngIf="total">{{compra.valorFormatado}}</span>
 
