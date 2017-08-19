@@ -19,6 +19,7 @@ import { ProdutoDao } from '../domains/produto/produto-dao';
 import { CompraDao} from '../domains/compra/compra-dao';
 
 import { Keyboard } from '@ionic-native/keyboard';
+import { Vibration } from '@ionic-native/vibration';
 
 import { Storage } from '@ionic/storage';
 
@@ -62,7 +63,8 @@ function providerStorageProdutos(){
     {provide: Storage, useFactory: providerStorageProdutos},
     ProdutoDao,
     CompraDao,
-    Keyboard
+    Keyboard,
+    Vibration
   ]
 })
 export class AppModule {}

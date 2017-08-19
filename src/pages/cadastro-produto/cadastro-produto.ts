@@ -6,6 +6,9 @@ import { ListaProduto } from '../../domains/produto/lista-produto';
 import { ProdutoDao } from '../../domains/produto/produto-dao';
 
 import { Keyboard } from '@ionic-native/keyboard';
+// ionic cordova plugin add cordova-plugin-vibration
+// npm install --save @ionic-native/vibration
+import { Vibration } from '@ionic-native/vibration';
 
 @IonicPage()
 @Component({
@@ -25,7 +28,8 @@ export class CadastroProdutoPage {
     public navParams: NavParams,
     private _toast: ToastController,
     private _dao: ProdutoDao,
-    private keyboard: Keyboard) {
+    private keyboard: Keyboard,
+    private vibration: Vibration) {
 
     this.listaProdutos = this.navParams.get('listaProdutosSelecionada');
 
@@ -53,9 +57,11 @@ export class CadastroProdutoPage {
         duration: 2000,
         position: 'middle'
       }).present()
-      .then( () =>
-        this.ionViewDidLoad()
-      )
+      .then( () => {
+        this.vibration.vibrate(1000);
+        
+        this.ionViewDidLoad();
+      })
     } else {
       if (this.produto.unidade == '')
         this.produto.unidade = 'UN'
