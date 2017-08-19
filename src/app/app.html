@@ -1,1 +1,21 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+    <!-- acima está fazendo um databiding para o ion-nav
+        para exibir o menu na rootPage -->
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    
+    <ion-content padding>
+        <ion-list inset>
+            <!-- menuClose fecha o menu quando clicado no botão -->
+            <button menuClose ion-item *ngFor="let pagina of paginas" (click)="abrirPagina(pagina)">
+                {{ pagina.titulo }}
+            </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<!-- swipeBackEnabled="false" desativa arrastar para fechar o menu -->
+<ion-nav [root]="rootPage" swipeBackEnabled="false" #content></ion-nav>
