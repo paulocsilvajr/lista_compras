@@ -46,11 +46,10 @@ export class CadastroProdutoPage {
     } else {
 
       if (this.alteracao)
-        this._dao.salvarProdutos(this.listaProdutos.produtos);        
-        // this.listaProdutos.alterarProduto(this.produto)
+        this._dao.salvarProdutos(this.listaProdutos.produtos);
         else{
           this._dao.novoId().then( (id) => {
-  
+
             this.produto._id = id;
   
             this.listaProdutos.adicionarProduto(this.produto);
