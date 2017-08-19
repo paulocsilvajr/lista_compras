@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 import { ListaCompra } from '../../domains/compra/lista-compra';
 import { Compra } from '../../domains/compra/compra';
 import { CompraDao } from '../../domains/compra/compra-dao';
-
-/**
- * Generated class for the CadastroCompraPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -45,7 +39,6 @@ export class CadastroCompraPage {
   salvarCompra(){
     if (this.alteracao){
       this._dao.salvarCompras(this.listaCompras.compras);
-      // this.listaCompras.alterarCompra(this.compra);
     } else {
       this.listaCompras.adicionarCompra(this.compra);
 
@@ -54,9 +47,5 @@ export class CadastroCompraPage {
 
     this.navCtrl.pop();
   }
-
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad CadastroCompraPage');
-  // }
 
 }
