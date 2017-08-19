@@ -1,26 +1,23 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# Lista de compras
+## Desenvolvido em Ionic 3.7.0, Ubuntu 16.04 e Node 8.2.1.
 
-## How to use this template
+Este repositório contém uma app desenvolvida em [Ionic](https://ionicframework.com/) para o controle pessoal de compras.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+## Pré-requisitos
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+Instalar os seguintes programas:
+```
+# apt install nodejs;
+# apt install npm;
+# npm install -g cordova ionic;
+// Necessário estar instalado e configurado o [AndroidStudio](https://developer.android.com/studio/) e o [GRADLE](https://gradle.org/install/) para gerar o arquivo apt.
 
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
 ```
 
-Then, to run it, cd into `myBlank` and run:
+### Licença
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
+[Licença GPL](https://github.com/paulocsilvajr/instalador-programas/blob/master/license_gpl.txt), arquivo em anexo no repositório.
 
-Substitute ios for android if not on a Mac.
+### Contato
 
+Paulo Carvalho da Silva Junior - pauluscave@gmail.com
