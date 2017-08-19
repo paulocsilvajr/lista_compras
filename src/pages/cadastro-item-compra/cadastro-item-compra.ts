@@ -5,13 +5,6 @@ import { Produto } from '../../domains/produto/produto';
 import { ProdutoCompra } from '../../domains/compra/produto-compra';
 import { Compra } from '../../domains/compra/compra';
 
-/**
- * Generated class for the CadastroItemCompraPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-cadastro-item-compra',
@@ -41,11 +34,11 @@ export class CadastroItemCompraPage {
       this.produto = this.produtoCompra.produto;
 
       this.alteracao = true;
-      
+
     }
 
     this.compra  = this.navParams.get('compraSelecionada');
-    
+
   }
 
   salvarProduto(){
@@ -53,9 +46,7 @@ export class CadastroItemCompraPage {
   }
 
   inserirProduto(){
-    // this.compra.produtos.push(this.produtoCompra);
     this.compra.adicionarProduto(this.produtoCompra);
-    
 
     this.navCtrl.pop()
     .then(() => this.navCtrl.pop());
@@ -66,9 +57,5 @@ export class CadastroItemCompraPage {
 
     this.navCtrl.pop();
   }
-
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad CadastroItemCompraPage');
-  // }
 
 }
