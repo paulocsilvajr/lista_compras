@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Compra } from '../../domains/compra/compra';
-import { ProdutoCompra } from '../../domains/compra/produto-compra';
-import { Produto } from '../../domains/produto/produto';
+// import { ProdutoCompra } from '../../domains/compra/produto-compra';
+// import { Produto } from '../../domains/produto/produto';
 import { DetalheCompraPage } from '../../pages/detalhe-compra/detalhe-compra';
 import { CadastroCompraPage } from '../../pages/cadastro-compra/cadastro-compra';
 import { ListaCompra } from '../../domains/compra/lista-compra';

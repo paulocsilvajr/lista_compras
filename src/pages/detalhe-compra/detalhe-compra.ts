@@ -39,12 +39,15 @@ export class DetalheCompraPage {
 
     this.quantidadeComprada = this.getQuantidadeComprada();
 
-    this.verificarSeCompleto();
+    // this.verificarSeCompleto();
   }
 
 
   ionViewWillEnter(){
     this._dao.salvarCompras(this.listaCompra.compras);
+
+    this.verificarSeCompleto();
+
     console.log('>>> Atualizado lista de compras');
     
   }
