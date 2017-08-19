@@ -18,27 +18,36 @@ export class PesquisaProdutoPage {
 
   public listaProdutos: ListaProduto = new ListaProduto();
   public compra: Compra;
+  public titulo: string;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private _alertCtrl: AlertController,
-    private _dao: ProdutoDao
-    ) {
+    private _dao: ProdutoDao) {
 
     this.compra = this.navParams.get('compraSelecionada');
-    
-    // this.listaProdutoExemplo();
-    this.carregarLista();
-
 
   }
 
+  ngOnInit(){
+    this.carregarLista();
+
+    if (this.compra == undefined)
+      this.titulo = "Lista de produtos cadastrados"
+    else
+      this.titulo = "Pesquisa de Produtos"
+  }
+
   cadastrarItemCompra(produto: Produto){
-    this.navCtrl.push(CadastroItemCompraPage, {
-      produtoSelecionado: produto,
-      compraSelecionada: this.compra
-    });
+    if (this.compra != undefined){
+
+      this.navCtrl.push(CadastroItemCompraPage, {
+        produtoSelecionado: produto,
+        compraSelecionada: this.compra
+      });
+
+    }
   }
 
   pesquisar(event){
@@ -48,16 +57,7 @@ export class PesquisaProdutoPage {
       if (valor && valor.trim() != ''){
         this.listaProdutos.filtrarProduto(valor);
       }
-
-      // console.log(this._dao.produtoPorId(valor));
     });
-    // this.listaProdutoExemplo();
-
-    // var valor = event.target.value;
-
-    // if (valor && valor.trim() != ''){
-    //   this.listaProdutos.filtrarProduto(valor);
-    // }
   }
 
   alterarProduto(produto: Produto){
@@ -116,31 +116,6 @@ export class PesquisaProdutoPage {
   listarProdutos(){
     return this.listaProdutos.produtos.reverse();
   }
-
-  // listaProdutoExemplo(){
-  //   let lista: Produto[] = [
-  //     new Produto('p1', 'm1', 'un', 2.1),
-  //     new Produto('p2', 'm2', 'un', 2.2),
-  //     new Produto('p3', 'm3', 'un', 2.3),
-  //     new Produto('p4', 'm4', 'un', 2.4),
-  //     new Produto('p5', 'm5', 'un', 2.5),
-  //     new Produto('p6', 'm6', 'un', 2.6),
-  //     new Produto('p7', 'm7', 'un', 2.7),
-  //     new Produto('p8', 'm8', 'un', 2.8),
-  //     new Produto('p9', 'm9', 'un', 2.9),
-  //     new Produto('p10', 'm10', 'un', 2.10),
-  //     new Produto('p11', 'm11', 'un', 2.11),
-  //     new Produto('p12', 'm12', 'un', 2.12),
-  //     new Produto('p13', 'm13', 'un', 2.13),
-  //     new Produto('p14', 'm14', 'un', 2.14),
-  //     new Produto('p15', 'm15', 'un', 2.15)
-  //   ]
-
-  //   lista.forEach(
-  //     (produto) => this.listaProdutos.adicionarProduto(produto)
-  //   );
-
-  // }
 
   carregarLista(){
     return this._dao.listarProdutos()

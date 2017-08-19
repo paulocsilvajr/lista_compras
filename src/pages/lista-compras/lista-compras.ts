@@ -13,7 +13,7 @@ import { CompraDao } from '../../domains/compra/compra-dao';
   templateUrl: 'lista-compras.html',
 })
 export class ListaComprasPage {
-  
+
   public listaCompras : ListaCompra = new ListaCompra();
   public total: boolean = false; 
 
@@ -30,6 +30,8 @@ export class ListaComprasPage {
   }
 
   private carregarLista(){
+    console.log('>>> Carregado lista de compra');
+
     return this._dao.listarCompras()
     .then( compras => {
       this.listaCompras.limparCompras();
