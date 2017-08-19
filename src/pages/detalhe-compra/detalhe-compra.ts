@@ -4,18 +4,9 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { Compra } from '../../domains/compra/compra';
 import { ProdutoCompra } from '../../domains/compra/produto-compra';
 import { PesquisaProdutoPage } from '../../pages/pesquisa-produto/pesquisa-produto';
-
 import { CadastroItemCompraPage } from '../../pages/cadastro-item-compra/cadastro-item-compra';
 import { ListaCompra } from '../../domains/compra/lista-compra';
 import { CompraDao } from '../../domains/compra/compra-dao';
-
-
-/**
- * Generated class for the DetalheCompraPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -34,14 +25,12 @@ export class DetalheCompraPage {
     public navParams: NavParams,
     public _alertCtrl: AlertController,
     private _dao: CompraDao) {
+
     this.compra = this.navParams.get('compraSelecionada');
     this.listaCompra = this.navParams.get('listaCompra');
 
     this.quantidadeComprada = this.getQuantidadeComprada();
-
-    // this.verificarSeCompleto();
   }
-
 
   ionViewWillEnter(){
     this._dao.salvarCompras(this.listaCompra.compras);
@@ -135,8 +124,6 @@ export class DetalheCompraPage {
       produtoCompraSelecionado: produto, 
       compraSelecionada: this.compra
     });
-
-    // this.atualizarStatus(produto);
   }
 
   public pesquisaProduto(compra: Compra){
@@ -144,9 +131,5 @@ export class DetalheCompraPage {
       compraSelecionada: compra
     });
   }
-
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad DetalheCompraPage');
-  // }
 
 }
