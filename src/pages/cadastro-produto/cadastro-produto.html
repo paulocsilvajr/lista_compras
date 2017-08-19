@@ -17,12 +17,12 @@
 
       <ion-item>
         <ion-label fixed>Nome</ion-label>
-        <ion-input type="text" [(ngModel)]="produto.nome"></ion-input>
+        <ion-input type="text" [(ngModel)]="produto.nome" autocomplete></ion-input>
       </ion-item>
   
       <ion-item>
         <ion-label fixed>Marca</ion-label>
-        <ion-input type="text" [(ngModel)]="produto.marca"></ion-input>
+        <ion-input type="text" [(ngModel)]="produto.marca" autocomplete></ion-input>
       </ion-item>
   
       <ion-item>
@@ -32,7 +32,7 @@
 
       <ion-item>
           <ion-label fixed>Valor</ion-label>
-          <ion-input type="number" step="0.5" min="0.0" [(ngModel)]="produto.valor"></ion-input>
+          <ion-input type="number" step="0.01" min="0.0" [(ngModel)]="produto.valor"></ion-input>
         </ion-item>
   
     </ion-list>

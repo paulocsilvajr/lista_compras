@@ -17,7 +17,8 @@ import { PesquisaProdutoPage } from '../pages/pesquisa-produto/pesquisa-produto'
 
 import { ProdutoDao } from '../domains/produto/produto-dao';
 import { CompraDao} from '../domains/compra/compra-dao';
-// import { ListaProduto } from '../domains/produto/lista-produto';
+
+import { Keyboard } from '@ionic-native/keyboard';
 
 import { Storage } from '@ionic/storage';
 
@@ -60,7 +61,8 @@ function providerStorageProdutos(){
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: Storage, useFactory: providerStorageProdutos},
     ProdutoDao,
-    CompraDao
+    CompraDao,
+    Keyboard
   ]
 })
 export class AppModule {}
