@@ -7,21 +7,29 @@ import { Produto } from '../../domains/produto/produto';
 export class ProdutoDao{
 
     private _tabela: string = 'produtos';
+    private _id: string = '_novoId';
     private _produtos: Produto[];
-    private _novoId: number = 0;
+    private _novoId: number;
+    private _idInicial: number = 1;
 
-    constructor(private _storage: Storage){
-
-    }
+    constructor(private _storage: Storage){ }
 
     salvarProdutos(produtos: Produto[]){
-        // console.log(produtos);
-        
         return this._storage.set(this._tabela, produtos);
     }
 
     novoId(){
-        return this.listarProdutos().then( () => this._novoId + 1);
+        return this._storage.get(this._id)
+        .then( (id) => {
+            if (id  == null)
+                id = this._novoId;
+
+            this._novoId = id + 1;
+
+            this._storage.set(this._id, this._novoId);
+
+            return id; 
+        });
     }
 
     produtoPorId(id: number){
@@ -48,15 +56,12 @@ export class ProdutoDao{
                 let produto = new Produto(tupla._id, tupla.nome, tupla.marca, tupla.unidade, tupla.valor);
                 this._produtos.push(produto);
 
-                if (tupla._id > this._novoId)
-                    this._novoId = tupla._id;
-
             });
 
             return this._produtos;
         })
         .catch( () => {
-            this._novoId = 0;
+            this._novoId = this._idInicial;
 
             return this._produtos;
         });

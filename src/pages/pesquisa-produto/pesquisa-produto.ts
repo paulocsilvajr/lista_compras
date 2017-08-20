@@ -19,6 +19,7 @@ export class PesquisaProdutoPage {
   public listaProdutos: ListaProduto = new ListaProduto();
   public compra: Compra;
   public titulo: string;
+  private produtosIncluidos: number[];
 
   constructor(
     public navCtrl: NavController,
@@ -35,8 +36,20 @@ export class PesquisaProdutoPage {
 
     if (this.compra == undefined)
       this.titulo = "Lista de produtos cadastrados"
-    else
+    else{
       this.titulo = "Pesquisa de Produtos"
+
+      this.capturarIncluidos();
+    }
+    
+  }
+
+  capturarIncluidos(){
+    this.produtosIncluidos = [];
+
+    this.compra.produtos.forEach( (produtoCompra) => {
+      this.produtosIncluidos.push(produtoCompra.produto._id);
+    });
   }
 
   cadastrarItemCompra(produto: Produto){
@@ -114,7 +127,13 @@ export class PesquisaProdutoPage {
   }
 
   listarProdutos(){
-    return this.listaProdutos.produtos.reverse();
+    let temp: Produto[] = [];
+    this.listaProdutos.produtos.reverse().forEach( produto => {
+      if (produto.visivel)
+        temp.push(produto);
+    });
+    
+    return temp;
   }
 
   carregarLista(){
@@ -124,7 +143,28 @@ export class PesquisaProdutoPage {
       this.listaProdutos.limparProdutos();
 
       produtos.forEach( produto => {
-        this.listaProdutos.adicionarProduto(produto)
+        if (this.compra == undefined){
+          // console.log('>>> lista');
+
+          produto.visivel = true;
+
+          this.listaProdutos.adicionarProduto(produto);
+        } else {
+          // console.log('>>> compra');
+          
+          let contem = false;
+
+          this.produtosIncluidos.forEach( id => {
+            if (id == produto._id){
+              contem = true;
+              return;
+            }
+          });
+          
+          produto.visivel = !contem;
+
+          this.listaProdutos.adicionarProduto(produto);
+        }
       });
     })
     .catch( () => 

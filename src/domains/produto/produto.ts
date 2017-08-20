@@ -7,6 +7,7 @@ export class Produto{
         public marca: string = '',
         public unidade: string = 'UN',
         public valor: number = 0.0,
+        public visivel: boolean = true
     ){ }
 
     get valorFormatado(){
