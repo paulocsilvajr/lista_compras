@@ -69,6 +69,8 @@ export class CadastroProdutoPage {
       if (String(this.produto.valor) == '')
         this.produto.valor = 0;
 
+      this.produto.unidade = this.produto.unidade.toUpperCase();
+
       if (this.alteracao)
         this._dao.salvarProdutos(this.listaProdutos.produtos);
         else{

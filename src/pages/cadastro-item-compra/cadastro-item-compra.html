@@ -18,17 +18,17 @@
   <ion-list>
 
     <ion-item>
-      <ion-label fixed>Produto</ion-label>
+      <ion-label color="primary" floating>Produto *</ion-label>
       <ion-input type="text" [value]="produto.descricao" readonly></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>Quantidade</ion-label>
+      <ion-label color="primary" floating>Quantidade *</ion-label>
       <ion-input type="number" step="1" min="1" [(ngModel)]="produtoCompra.quantidade" #foco></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>Preço</ion-label>
+      <ion-label color="primary" floating>Preço *</ion-label>
       <ion-input type="number" step="0.01" min="0.0" [(ngModel)]="produtoCompra.valor"></ion-input>
     </ion-item>
 
