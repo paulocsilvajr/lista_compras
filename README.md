@@ -1,5 +1,5 @@
 # Lista de compras
-## Desenvolvido em Ionic 3.7.0, Ubuntu 16.04 e Node 8.2.1.
+## Desenvolvido em Ionic 3.7.0, Node 8.2.1 e Ubuntu 16.04.
 
 Este repositório contém uma app desenvolvida em [Ionic](https://ionicframework.com/) para o controle pessoal de compras.
 
@@ -12,6 +12,17 @@ Instalar os seguintes programas:
 # npm install -g cordova ionic;
 ```
 Necessário estar instalado e configurado o [AndroidStudio](https://developer.android.com/studio/) e o [GRADLE](https://gradle.org/install/) para gerar o arquivo apt.
+
+## Instalação e teste
+
+Para instalação dos pacotes e dependências executar o comando seguinte na pasta do projeto:
+```
+npm install;
+```
+Para testar a aplicação no navegador, executar:
+```
+ionic serve --lab;
+```
 
 ### Licença
 
