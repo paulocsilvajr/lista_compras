@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 import { CadastroItemCompraPage } from '../../pages/cadastro-item-compra/cadastro-item-compra';
 import { CadastroProdutoPage } from '../../pages/cadastro-produto/cadastro-produto';
@@ -25,6 +25,7 @@ export class PesquisaProdutoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private _alertCtrl: AlertController,
+    private _loadingCtrl: LoadingController,
     private _dao: ProdutoDao) {
 
     this.compra = this.navParams.get('compraSelecionada');
@@ -137,6 +138,11 @@ export class PesquisaProdutoPage {
   }
 
   carregarLista(){
+    let loading = this._loadingCtrl.create({
+      content: 'Carregando produtos...'
+    });
+    loading.present();
+
     return this._dao.listarProdutos()
     .then( produtos => {
       
@@ -166,10 +172,14 @@ export class PesquisaProdutoPage {
           this.listaProdutos.adicionarProduto(produto);
         }
       });
+
+      loading.dismiss();      
     })
-    .catch( () => 
-      this.listaProdutos.limparProdutos()
-    );
+    .catch( () => {
+      this.listaProdutos.limparProdutos();
+      
+      loading.dismiss();
+    });
   }
 
 }

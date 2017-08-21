@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Compra } from '../../domains/compra/compra';
 import { DetalheCompraPage } from '../../pages/detalhe-compra/detalhe-compra';
 import { CadastroCompraPage } from '../../pages/cadastro-compra/cadastro-compra';
@@ -21,6 +21,7 @@ export class ListaComprasPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private _alertCtrl: AlertController,
+    private _loadingCtrl: LoadingController,
     private _dao: CompraDao) {
 
   }
@@ -32,6 +33,11 @@ export class ListaComprasPage {
   private carregarLista(){
     console.log('>>> Carregado lista de compra');
 
+    let loading = this._loadingCtrl.create({
+      content: 'Carregando compras...'
+    });
+    loading.present();
+
     return this._dao.listarCompras()
     .then( compras => {
       this.listaCompras.limparCompras();
@@ -39,10 +45,14 @@ export class ListaComprasPage {
       compras.forEach( compra => {
         this.listaCompras.adicionarCompra(compra)
       });
+
+      loading.dismiss();
     })
-    .catch( () =>
-      this.listaCompras.limparCompras()
-    );
+    .catch( () =>{
+      this.listaCompras.limparCompras();
+      
+      loading.dismiss();
+    });
   }
 
   public alertaExclusao(compra: Compra){
