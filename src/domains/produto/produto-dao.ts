@@ -7,7 +7,7 @@ import { Produto } from '../../domains/produto/produto';
 export class ProdutoDao{
 
     private _tabela: string = 'produtos';
-    private _id: string = '_novoId';
+    private _id: string = '_novoIdProduto';
     private _produtos: Produto[];
     private _novoId: number;
     private _idInicial: number = 1;
