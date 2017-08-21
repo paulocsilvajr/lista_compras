@@ -26,7 +26,7 @@ export class ListaProduto{
     }
 
     filtrarProduto(nomeProduto: string){
-        this._lista = this._lista.filter( (produto) => {
+        return this._lista.filter( (produto) => {
             return (produto.nome.toLowerCase().indexOf(nomeProduto.toLowerCase()) > -1);
         });
     }

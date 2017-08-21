@@ -17,6 +17,7 @@ import { ProdutoDao } from '../../domains/produto/produto-dao';
 export class PesquisaProdutoPage {
 
   public listaProdutos: ListaProduto = new ListaProduto();
+  public listaFiltrada: Produto[] = [];
   public compra: Compra;
   public titulo: string;
   private produtosIncluidos: number[];
@@ -33,7 +34,10 @@ export class PesquisaProdutoPage {
   }
 
   ngOnInit(){
-    this.carregarLista();
+    this.carregarLista()
+    .then( () => 
+      this.listaFiltrada = this.listaProdutos.produtos
+    );
 
     if (this.compra == undefined)
       this.titulo = "Lista de produtos cadastrados"
@@ -65,13 +69,13 @@ export class PesquisaProdutoPage {
   }
 
   pesquisar(event){
-    this.carregarLista().then( () => {
-      var valor = event.target.value;
-      
-      if (valor && valor.trim() != ''){
-        this.listaProdutos.filtrarProduto(valor);
-      }
-    });
+    this.listaFiltrada = this.listaProdutos.produtos;
+
+    var valor = event.target.value;
+    
+    if (valor && valor.trim() != ''){
+      this.listaFiltrada = this.listaProdutos.filtrarProduto(valor);
+    }
   }
 
   alterarProduto(produto: Produto){
@@ -129,7 +133,8 @@ export class PesquisaProdutoPage {
 
   listarProdutos(){
     let temp: Produto[] = [];
-    this.listaProdutos.produtos.reverse().forEach( produto => {
+
+    this.listaFiltrada.reverse().forEach( produto => {
       if (produto.visivel)
         temp.push(produto);
     });
@@ -173,7 +178,7 @@ export class PesquisaProdutoPage {
         }
       });
 
-      loading.dismiss();      
+      loading.dismiss();
     })
     .catch( () => {
       this.listaProdutos.limparProdutos();
