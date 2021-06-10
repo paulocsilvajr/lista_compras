@@ -45,7 +45,8 @@
         "superagent": "^6.1.0",
         "sw-toolbox": "3.6.0",
         "websocket-extensions": "^0.1.4",
-        "zone.js": "0.8.12"
+        "zone.js": "0.8.12",
+        "trim-newlines": ">=3.0.1"
     },
     "devDependencies": {
         "@ionic/app-scripts": "^3.2.4",
